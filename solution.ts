@@ -36,3 +36,15 @@ const filterByRating = (arr: BookArray[]): BookArray[] => {
   const result = arr.filter((a) => a.rating >= 4);
   return result;
 };
+
+type UserType = {
+  id: number;
+  name: string;
+  email: string;
+  isActive: boolean;
+};
+const filterActiveUsers = (arr: UserType[]): UserType[] => {
+  const result = arr.filter((a) => a.isActive === true);
+  return result;
+};
+
