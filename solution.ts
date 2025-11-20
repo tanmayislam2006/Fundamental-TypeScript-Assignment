@@ -28,3 +28,11 @@ class Person {
   }
 }
 
+type BookArray = {
+  title: string;
+  rating: number;
+};
+const filterByRating = (arr: BookArray[]): BookArray[] => {
+  const result = arr.filter((a) => a.rating >= 4);
+  return result;
+};
