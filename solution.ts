@@ -24,7 +24,7 @@ class Person {
     this.age = age;
   }
   getDetails() {
-    return `'Name: ${this.name}, Age: ${this.age}'`;
+    return `"Name: ${this.name}, Age: ${this.age}"`;
   }
 }
 
@@ -61,3 +61,30 @@ const printBookDetails = (bookInfo: Book) => {
   );
 };
 
+type UniqueArray = (number | string)[];
+const getUniqueValues = (arr1: UniqueArray, arr2: UniqueArray): UniqueArray => {
+  const newArray = [...arr1, ...arr2];
+  const result: UniqueArray = [];
+  for (const item of newArray) {
+    if (!result.includes(item)) {
+      result.push(item);
+    }
+  }
+  return result;
+};
+type Product = {
+  name: string;
+  price: number;
+  quantity: number;
+  discount?: number;
+};
+const calculateTotalPrice = (allProducts: Product[]) => {
+  const result = allProducts.reduce((acc, item) => {
+    const { price, quantity, discount } = item;
+    const subTotal = price * quantity;
+    const discountAmount = discount ? (subTotal * discount) / 100 : 0;
+    const totalPrice = subTotal - discountAmount;
+    return acc + totalPrice;
+  }, 0);
+  return result;
+};
